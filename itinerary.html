@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BALI · Build Your Trip</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+:root{--bg:#07090c;--bg2:#0b1014;--panel:rgba(255,255,255,.045);--line:rgba(255,255,255,.1);--line2:rgba(255,255,255,.18);--txt:#f4efe7;--mut:#a8b0b6;--dim:#6f7a80;--gold:#e2b04a;--gold2:#f6d789;--teal:#2dd4bf;--coral:#ff6b5e;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--txt);font-family:Manrope,sans-serif;line-height:1.6;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+h1,h2,h3{font-family:"Playfair Display",serif}a{color:inherit}button,input,select{font:inherit}button{cursor:pointer;color:inherit;background:none;border:0}
+.wrap{max-width:1240px;margin:auto;padding:0 clamp(20px,4vw,48px)}.glass{background:var(--panel);border:1px solid var(--line);border-radius:20px;backdrop-filter:blur(14px)}
+nav{position:sticky;top:0;z-index:20;background:rgba(7,9,12,.78);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nbar{display:flex;justify-content:space-between;align-items:center;padding:14px clamp(20px,4vw,48px)}
+.logo{display:flex;align-items:baseline;gap:10px;text-decoration:none}.logo b{font-family:"Playfair Display";font-size:24px;letter-spacing:.12em}.logo span{font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.nlinks{display:flex;gap:6px;flex-wrap:wrap}.nlinks a{text-decoration:none;color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.08em;padding:8px 12px;border-radius:99px;transition:.25s}.nlinks a:hover,.nlinks a.active{color:var(--gold2);background:rgba(255,255,255,.05)}
+.hero{padding:90px 0 40px;background:radial-gradient(circle at 75% 5%,rgba(45,212,191,.12),transparent 35%),radial-gradient(circle at 20% 0,rgba(226,176,74,.12),transparent 30%)}.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:800}.eyebrow:before{content:"";width:34px;height:1px;background:var(--gold)}
+h1{font-size:clamp(44px,7vw,82px);line-height:1.02;margin:16px 0}h1 em{color:var(--gold2)}.lead{color:var(--mut);max-width:700px;font-size:16px}
+.layout{display:grid;grid-template-columns:360px 1fr;gap:24px;align-items:start;padding:28px 0 90px}.panel{padding:24px}.panel h3{font-size:22px;margin-bottom:18px}.fgroup{margin-bottom:18px}.fgroup label{display:block;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);font-weight:800;margin-bottom:8px}.fgroup select,.fgroup input{width:100%;padding:12px 14px;border:1px solid var(--line2);border-radius:12px;background:rgba(255,255,255,.05);color:var(--txt);outline:none;transition:.25s}.fgroup select:focus,.fgroup input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(226,176,74,.09)}
+.interests{display:flex;flex-wrap:wrap;gap:8px}.chip{padding:8px 14px;border-radius:99px;border:1px solid var(--line2);font-size:12px;color:var(--mut);transition:.25s}.chip:hover{transform:translateY(-2px);border-color:var(--gold);color:var(--txt)}.chip.on{background:var(--gold);color:#151004;border-color:var(--gold);box-shadow:0 8px 20px rgba(226,176,74,.2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:99px;font-weight:800;font-size:12px;letter-spacing:.07em;text-transform:uppercase;transition:transform .3s var(--ease),box-shadow .3s}.btn:hover{transform:translateY(-3px)}.btn:active{transform:translateY(0) scale(.98)}.gold{background:linear-gradient(115deg,var(--gold),var(--gold2));color:#181204;box-shadow:0 10px 26px rgba(226,176,74,.22)}.ghost{border:1px solid var(--line2);background:rgba(255,255,255,.03)}.actions{display:flex;gap:10px;flex-wrap:wrap}.actions .btn{flex:1}
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}.stat{padding:16px 18px}.stat small{color:var(--dim);font-size:10px;text-transform:uppercase;letter-spacing:.15em}.stat b{display:block;font-family:"Playfair Display";font-size:28px;color:var(--gold2);margin-top:3px}
+.timeline{padding:8px 0 0 30px;position:relative}.timeline:before{content:"";position:absolute;left:8px;top:8px;bottom:12px;width:2px;background:linear-gradient(var(--gold),rgba(226,176,74,.05))}.day{margin:0 0 30px}.day-head{display:flex;align-items:center;gap:10px;margin-bottom:13px}.day-head b{font-family:"Playfair Display";font-size:25px}.day-head span{color:var(--gold);font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+.item{position:relative;display:grid;grid-template-columns:65px 34px 1fr 34px;gap:12px;align-items:center;padding:13px 14px;margin-bottom:9px;border:1px solid var(--line);background:var(--panel);border-radius:14px;transition:.3s var(--ease);animation:slideIn .55s var(--ease) both;cursor:grab}.item:hover{border-color:rgba(226,176,74,.5);transform:translateX(4px)}.item.dragging{opacity:.45;border-style:dashed}.item:before{content:"";position:absolute;left:-27px;width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(226,176,74,.55)}.time{font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--teal);font-weight:800}.icon{font-size:20px}.item b{display:block;font-size:13.5px}.item small{display:block;color:var(--dim);font-size:11px}.rm{width:30px;height:30px;border-radius:9px;color:var(--dim);transition:.25s}.rm:hover{color:var(--coral);background:rgba(255,107,94,.12)}
+.empty{padding:50px 30px;text-align:center;border:1px dashed var(--line2);border-radius:18px;color:var(--dim)}.empty b{display:block;font-family:"Playfair Display";font-size:24px;color:var(--txt);margin-bottom:7px}
+.tip{margin-top:14px;padding:12px 14px;border-radius:14px;background:rgba(45,212,191,.07);border:1px solid rgba(45,212,191,.18);color:#b7efe6;font-size:11.5px}
+.progress{height:7px;border-radius:99px;background:rgba(255,255,255,.06);overflow:hidden;margin-top:8px}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width 1s var(--ease)}
+.toast{position:fixed;left:50%;bottom:25px;transform:translateX(-50%) translateY(20px);opacity:0;z-index:50;padding:12px 20px;border-radius:99px;border:1px solid var(--line2);background:#141b21;box-shadow:0 16px 40px rgba(0,0,0,.45);font-size:13px;font-weight:700;transition:.35s var(--ease)}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.modal{position:fixed;inset:0;background:rgba(5,7,9,.82);backdrop-filter:blur(10px);display:none;place-items:center;z-index:40;padding:20px}.modal.open{display:grid}.modal-box{width:min(560px,96vw);padding:28px;background:#10161b;border:1px solid var(--line2);border-radius:24px;animation:pop .45s var(--ease)}.modal-box h3{font-size:30px;margin:6px 0 10px}
+@keyframes slideIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}@keyframes pop{from{opacity:0;transform:translateY(26px) scale(.96)}to{opacity:1;transform:none}}
+@media(max-width:920px){.layout{grid-template-columns:1fr}.nlinks{display:none}}@media(max-width:640px){.summary{grid-template-columns:1fr}.actions .btn{flex:auto}.item{grid-template-columns:58px 30px 1fr 30px}}
+
+
+/* Looping Bali background */
+.loop-bg{position:fixed;inset:0;z-index:-3;overflow:hidden;background:#07090c}
+.loop-bg .lb-slide{position:absolute;inset:-6%;background-size:cover;background-position:center;opacity:0;transform:scale(1.08);animation:lbKenBurns 24s linear infinite}
+.loop-bg .lb-slide:nth-child(1){background-image:url("https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=2200&q=78");animation-delay:0s}
+.loop-bg .lb-slide:nth-child(2){background-image:url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=78");animation-delay:8s}
+.loop-bg .lb-slide:nth-child(3){background-image:url("https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=2200&q=78");animation-delay:16s}
+.loop-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,9,12,.78),rgba(7,9,12,.62) 38%,rgba(7,9,12,.9)),radial-gradient(circle at 50% 15%,rgba(45,212,191,.11),transparent 35%)}
+@keyframes lbKenBurns{0%{opacity:0;transform:scale(1.1) translate3d(0,0,0)}7%{opacity:1}33%{opacity:1;transform:scale(1.01) translate3d(-1.2%, -0.8%, 0)}40%{opacity:0;transform:scale(1.01) translate3d(-1.8%, -1.2%, 0)}100%{opacity:0;transform:scale(1.01) translate3d(-1.8%, -1.2%, 0)}}
+@media (prefers-reduced-motion:reduce){.loop-bg .lb-slide{animation:none;opacity:0}.loop-bg .lb-slide:first-child{opacity:1}}
+.page-hero,main,footer{position:relative;z-index:0}
+</style>
+</head>
+<body><div class="loop-bg" aria-hidden="true"><div class="lb-slide"></div><div class="lb-slide"></div><div class="lb-slide"></div></div>
+
+<nav><div class="nbar"><a class="logo" href="index(20260915-090126)(1).html"><b>BALI</b><span>Island of the Gods</span></a><div class="nlinks">
+<a href="index(20260915-090126)(1).html">Explore</a><a href="event.html">Events</a><a class="active" href="itinerary.html">Itinerary</a><a href="gallery.html">Gallery</a><a href="travelinfo.html">Travel Info</a><a href="deals.html">Deals</a>
+</div></div></nav>
+<header class="hero"><div class="wrap"><span class="eyebrow">Plan your journey</span><h1>Build Your <em>Trip</em></h1><p class="lead">Choose how you travel, what you love, and how long you're staying. Your Bali day plan will choreograph itself — then you can fine-tune every activity.</p></div></header>
+<main class="wrap layout">
+<aside>
+<section class="glass panel">
+<h3>⚙︎ Trip Settings</h3>
+<div class="fgroup"><label>Trip duration</label><select id="days"><option value="2">2 Days</option><option value="3" selected>3 Days</option><option value="4">4 Days</option><option value="5">5 Days</option><option value="7">7 Days</option></select></div>
+<div class="fgroup"><label>Travel style</label><select id="style"><option>Balanced Explorer</option><option>Luxury & Slow</option><option>Adventure Hunter</option><option>Culture Deep-Dive</option><option>Slow Island Escape</option></select></div>
+<div class="fgroup"><label>Budget level</label><select id="budget"><option value="mid">Mid-range ($80–150/day)</option><option value="low">Backpacker ($30–80/day)</option><option value="high">Premium ($150+/day)</option></select></div>
+<div class="fgroup"><label>Start date</label><input id="startDate" type="date"></div>
+<div class="fgroup"><label>Interests</label><div class="interests" id="interests"></div></div>
+<div class="actions"><button class="btn gold" id="generate">✨ Generate My Trip</button><button class="btn ghost" id="surprise">🎲 Surprise Me</button><button class="btn ghost" id="reset">↺ Reset</button></div>
+<div class="tip">Drag activities to reorder them. Remove any stop with ✕. Your plan is saved in this browser when you press <b>Save Trip</b>.</div>
+</section>
+<section class="glass panel" style="margin-top:18px">
+<h3>➕ Add your own</h3>
+<div class="fgroup"><label>Activity name</label><input id="customName" placeholder="e.g. Sunset at Canggu"></div>
+<div class="fgroup"><label>Time</label><select id="customTime"><option>Morning</option><option>Afternoon</option><option>Evening</option><option>Night</option></select></div>
+<button class="btn ghost" id="addCustom" style="width:100%">Add Activity</button>
+</section>
+</aside>
+<section>
+<div class="summary"><div class="glass stat"><small>Trip</small><b id="summaryDays">3 days</b></div><div class="glass stat"><small>Stops</small><b id="summaryStops">0</b></div><div class="glass stat"><small>Estimate</small><b id="summaryCost">$0</b></div></div>
+<div class="glass panel">
+<div style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:16px">
+<div><h3 style="margin:0;font-size:24px">Your Bali Timeline</h3><small id="dateRange" style="color:var(--dim)">Set your dates and generate a plan.</small></div>
+<div class="actions" style="max-width:440px"><button class="btn ghost" id="save">💾 Save Trip</button><button class="btn ghost" id="copy">⤴ Copy Plan</button><button class="btn gold" id="share">↗ Share Plan</button></div>
+</div>
+<div id="timeline"><div class="empty"><b>Your journey awaits</b>Select your travel style and interests, then press <i>Generate My Trip</i>.</div></div>
+</div>
+<div class="glass panel" style="margin-top:18px">
+<div style="display:flex;justify-content:space-between;gap:15px;align-items:center"><div><h3 style="margin:0;font-size:20px">Trip Progress</h3><small style="color:var(--dim)">Complete your planning checklist</small></div><b id="progressPct" style="color:var(--gold2)">0%</b></div>
+<div class="progress"><i id="progressBar"></i></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px" id="checks"></div>
+</div></section></main>
+<div class="modal" id="saveModal"><div class="modal-box"><button id="closeModal" style="float:right;font-size:20px;color:var(--dim)">✕</button><span class="eyebrow">Saved locally</span><h3>Your Bali plan is saved 🌺</h3><p style="color:var(--mut);margin-bottom:18px">This trip is stored in this browser, so you can come back to it later.</p><button class="btn gold" id="continue">Continue Planning</button></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+
+const DEST=[{"id": "a1", "name": "Tanah Lot Temple", "cat": "Culture", "loc": "Tabanan, West Bali", "img": "photo-1512100356356-de1b84283e18", "desc": "A sea temple perched on a tidal rock — silhouette perfection at sunset, guarded by sacred sea snakes.", "rating": 4.8, "dur": "2–3 hrs", "price": "IDR 60k (~$4)", "badge": "must visit", "cost": 4, "ic": "🛕"}, {"id": "a2", "name": "Tegallalang Rice Terraces", "cat": "Nature", "loc": "Ubud, Gianyar", "img": "photo-1537996194471-e657df975ab4", "desc": "Emerald amphitheatres carved over 600 years by Subak irrigation — Bali's most iconic landscape.", "rating": 4.7, "dur": "1–2 hrs", "price": "IDR 25k (~$2)", "badge": "top rated", "cost": 2, "ic": "🌿"}, {"id": "a3", "name": "Mount Batur Sunrise Trek", "cat": "Adventure", "loc": "Kintamani Highlands", "img": "photo-1506905925346-21bda4d32df4", "desc": "Summit an active volcano by headlamp and watch dawn ignite the caldera lake below.", "rating": 4.9, "dur": "6–8 hrs", "price": "$35 guided", "badge": "trending", "cost": 35, "ic": "⛰️"}, {"id": "a4", "name": "Uluwatu & Kecak Fire Dance", "cat": "Culture", "loc": "Uluwatu Cliffs", "img": "photo-1518548419970-58e3b4079ab2", "desc": "A cliff-top temple 70m above the surf, where 70 dancers chant fire into the night.", "rating": 4.8, "dur": "3 hrs", "price": "IDR 150k (~$10)", "badge": "local favorite", "cost": 10, "ic": "🛕"}, {"id": "a5", "name": "Nusa Penida Island Hopper", "cat": "Adventure", "loc": "Nusa Penida", "img": "photo-1544551763-46a013bb70d5", "desc": "Kelingking's T-Rex cliff, Angel's Billabong and manta rays — the wildest day on water.", "rating": 4.9, "dur": "Full day", "price": "$55 boat + tour", "badge": "hidden gem", "cost": 55, "ic": "⛰️"}, {"id": "a6", "name": "Ubud Monkey Forest", "cat": "Nature", "loc": "Ubud Central", "img": "photo-1470071459604-3b5ec3a7fe05", "desc": "1,200 long-tailed macaques ruling mossy temple ruins in a banyan dream.", "rating": 4.6, "dur": "1–2 hrs", "price": "IDR 80k (~$5)", "badge": "best value", "cost": 5, "ic": "🌿"}, {"id": "a7", "name": "Tirta Empul Water Temple", "cat": "Culture", "loc": "Tampaksiring", "img": "photo-1528181304800-259b08848526", "desc": "Purify body and spirit beneath sacred springs that have flowed for a thousand years.", "rating": 4.7, "dur": "1–2 hrs", "price": "IDR 50k (~$3)", "badge": "local favorite", "cost": 3, "ic": "🛕"}, {"id": "a8", "name": "Seminyak Sunset Beach Club", "cat": "Nightlife", "loc": "Seminyak Beach", "img": "photo-1540541338287-41700207dee6", "desc": "Daybeds, DJs and a front-row seat to Bali's famous golden-hour ritual.", "rating": 4.6, "dur": "Half day", "price": "$25 minimum spend", "badge": "trending", "cost": 25, "ic": "📍"}];
+const interests=[...new Set(DEST.map(x=>x.cat))];
+const travelExtras=[
+{name:"Breakfast at a local warung",cat:"Food",ic:"🍜",cost:8,time:"Morning"},
+{name:"Balinese spa ritual",cat:"Wellness",ic:"🧘",cost:28,time:"Afternoon"},
+{name:"Seminyak sunset walk",cat:"Beach",ic:"🌅",cost:0,time:"Evening"},
+{name:"Coffee & coconut break",cat:"Food",ic:"☕",cost:7,time:"Afternoon"},
+{name:"Beach sunrise",cat:"Beach",ic:"🌊",cost:0,time:"Morning"},
+{name:"Free time / pool hour",cat:"Relax",ic:"🏝️",cost:0,time:"Afternoon"}];
+let plan=[],dragId=null;
+const $=id=>document.getElementById(id);
+function toast(msg){const t=$("toast");t.textContent=msg;t.classList.add("show");clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.remove("show"),2200)}
+function setDefaultDate(){const d=new Date();d.setDate(d.getDate()+14);$("startDate").value=d.toISOString().slice(0,10)}
+function renderInterests(){$("interests").innerHTML=interests.map(i=>`<button class="chip" data-int="${i}">${i}</button>`).join("");document.querySelectorAll("[data-int]").forEach(b=>b.onclick=()=>{b.classList.toggle("on");renderChecks()})}
+function selectedInterests(){return [...document.querySelectorAll(".chip.on")].map(b=>b.dataset.int)}
+function pickPool(style,budgetSel,intSel){
+  let pool=[...DEST];
+  if(intSel.length){const fav=pool.filter(x=>intSel.includes(x.cat));pool=[...fav,...pool.filter(x=>!intSel.includes(x.cat))]}
+  if(style==="Adventure Hunter") pool.sort((a,b)=>(b.cat==="Adventure")-(a.cat==="Adventure"));
+  if(style==="Culture Deep-Dive") pool.sort((a,b)=>(b.cat==="Culture")-(a.cat==="Culture"));
+  if(style==="Slow Island Escape") pool.sort((a,b)=>(b.cat==="Nature")-(a.cat==="Nature"));
+  if(style==="Luxury & Slow") pool.sort((a,b)=>b.cost-a.cost);
+  if(budgetSel==="low") pool.sort((a,b)=>a.cost-b.cost);
+  if(budgetSel==="high") pool.sort((a,b)=>b.cost-a.cost);
+  return pool;
+}
+function addDays(base,n){const d=new Date(base+"T12:00:00");d.setDate(d.getDate()+n);return d.toLocaleDateString(undefined,{weekday:"short",month:"short",day:"numeric"})}
+function generate(surprise=false){
+  if(surprise){document.querySelectorAll(".chip").forEach(b=>b.classList.toggle("on",Math.random()>.45));$("style").value=["Balanced Explorer","Luxury & Slow","Adventure Hunter","Culture Deep-Dive","Slow Island Escape"][Math.floor(Math.random()*5)];$("budget").value=["low","mid","high"][Math.floor(Math.random()*3)];}
+  const days=+$("days").value,style=$("style").value,pool=pickPool(style,$("budget").value,selectedInterests());
+  plan=[];
+  for(let d=1;d<=days;d++){
+    const main=pool[(d-1)%pool.length];
+    const extra=style==="Adventure Hunter"?travelExtras[4]:style==="Culture Deep-Dive"?travelExtras[0]:travelExtras[d%2?3:2];
+    const items=[
+      {...main,slot:"08:00",type:"Highlight"},
+      {...extra,id:`extra-${d}`,slot:extra.time==="Morning"?"09:30":extra.time==="Afternoon"?"15:00":"18:00",type:"Flex"}
+    ];
+    if(d===days) items.push({...travelExtras[2],id:`sunset-${d}`,slot:"20:00",type:"Evening"});
+    plan.push({day:d,date:addDays($("startDate").value,d-1),items});
+  }
+  render();toast("✨ Your itinerary is ready");
+}
+function render(){
+  $("summaryDays").textContent=plan.length+" day"+(plan.length===1?"":"s");
+  const stops=plan.reduce((s,d)=>s+d.items.length,0),cost=plan.reduce((s,d)=>s+d.items.reduce((a,x)=>a+(+x.cost||0),0),0);
+  $("summaryStops").textContent=stops;$("summaryCost").textContent="$"+Math.round(cost);
+  $("dateRange").textContent=plan.length?`${plan[0].date} → ${plan[plan.length-1].date}`:"Set your dates and generate a plan.";
+  if(!plan.length){$("timeline").innerHTML='<div class="empty"><b>Your journey awaits</b>Select your travel style and interests, then press <i>Generate My Trip</i>.</div>';renderChecks();return}
+  $("timeline").innerHTML=plan.map((d,di)=>`<div class="day"><div class="day-head"><b>Day ${d.day}</b><span>${d.date}</span><span style="margin-left:auto;color:var(--dim)">${d.items.length} stops</span></div>${d.items.map((it,ii)=>`<div class="item" draggable="true" data-day="${di}" data-item="${ii}" style="animation-delay:${ii*.06}s"><span class="time">${it.slot}</span><span class="icon">${it.ic||"📍"}</span><div><b>${it.name}</b><small>${it.type||it.cat} · ${it.cost?"$"+it.cost+" est.":"Free"}</small></div><button class="rm" title="Remove" onclick="removeItem(${di},${ii})">✕</button></div>`).join("")}</div>`).join("");
+  bindDrag();renderChecks();
+}
+function removeItem(di,ii){plan[di].items.splice(ii,1);render();toast("Removed from your plan")}
+function bindDrag(){
+ document.querySelectorAll(".item").forEach(el=>{
+   el.addEventListener("dragstart",()=>{dragId={d:+el.dataset.day,i:+el.dataset.item};el.classList.add("dragging")});
+   el.addEventListener("dragend",()=>el.classList.remove("dragging"));
+   el.addEventListener("dragover",e=>e.preventDefault());
+   el.addEventListener("drop",e=>{e.preventDefault();const target={d:+el.dataset.day,i:+el.dataset.item};if(!dragId)return;const moved=plan[dragId.d].items.splice(dragId.i,1)[0];let adj=target.i;if(dragId.d===target.d&&dragId.i<target.i)adj--;plan[target.d].items.splice(adj,0,moved);dragId=null;render();toast("Order updated")});
+ })
+}
+function savePlan(){localStorage.setItem("baliTripPlan",JSON.stringify({plan,days:$("days").value,style:$("style").value,budget:$("budget").value,start:$("startDate").value,ints:selectedInterests()}));$("saveModal").classList.add("open");renderChecks();toast("💾 Trip saved")}
+function loadPlan(){try{const x=JSON.parse(localStorage.getItem("baliTripPlan")||"null");if(!x)return;plan=x.plan||[];$("days").value=x.days||3;$("style").value=x.style||"Balanced Explorer";$("budget").value=x.budget||"mid";$("startDate").value=x.start||$("startDate").value;(x.ints||[]).forEach(i=>document.querySelector(`[data-int="${CSS.escape(i)}"]`)?.classList.add("on"));render()}catch(e){}}
+function resetAll(){plan=[];$("days").value=3;$("style").value="Balanced Explorer";$("budget").value="mid";setDefaultDate();document.querySelectorAll(".chip").forEach(c=>c.classList.remove("on"));localStorage.removeItem("baliTripPlan");render();toast("Reset complete")}
+function copyPlan(){if(!plan.length)return toast("Generate a trip first");const text=["BALI — MY TRIP",...plan.map(d=>`Day ${d.day} · ${d.date}\n`+d.items.map(i=>`• ${i.slot} ${i.name}`).join("\n"))].join("\n\n");navigator.clipboard?.writeText(text).then(()=>toast("📋 Plan copied")).catch(()=>toast("Copy blocked — try Share"))}
+async function sharePlan(){if(!plan.length)return toast("Generate a trip first");if(navigator.share){try{await navigator.share({title:"My Bali Trip",text:"I built a Bali itinerary with Visit Bali Guide.",url:location.href})}catch(e){}}else copyPlan()}
+function addCustom(){const name=$("customName").value.trim();if(!name)return toast("Enter an activity name");if(!plan.length)generate();const map={Morning:"09:30",Afternoon:"15:00",Evening:"18:30",Night:"21:00"};plan[0].items.push({id:"custom-"+Date.now(),name,cat:"Custom",ic:"✨",cost:0,slot:map[$("customTime").value],type:"Custom"});$("customName").value="";render();toast("✨ Added to Day 1")}
+function renderChecks(){const checks=["Dates chosen","Interests selected","Itinerary generated","Trip saved","Packing ready"],done=[!!$("startDate").value,selectedInterests().length>0,plan.length>0,!!localStorage.getItem("baliTripPlan"),false];$("checks").innerHTML=checks.map((x,i)=>`<span class="chip ${done[i]?"on":""}">${done[i]?"✓":"○"} ${x}</span>`).join("");const pct=Math.round(done.filter(Boolean).length/done.length*100);$("progressPct").textContent=pct+"%";$("progressBar").style.width=pct+"%"}
+$("generate").onclick=()=>generate(false);$("surprise").onclick=()=>generate(true);$("reset").onclick=resetAll;$("save").onclick=savePlan;$("copy").onclick=copyPlan;$("share").onclick=sharePlan;$("addCustom").onclick=addCustom;$("continue").onclick=()=>$("saveModal").classList.remove("open");$("closeModal").onclick=()=>$("saveModal").classList.remove("open");$("startDate").onchange=renderChecks;
+document.addEventListener("click",e=>{if(e.target.id==="saveModal")$("saveModal").classList.remove("open")});document.addEventListener("keydown",e=>{if(e.key==="Escape")$("saveModal").classList.remove("open")});
+setDefaultDate();renderInterests();loadPlan();render();
+
+</script>
+</body>
+</html>
